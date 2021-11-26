@@ -15,6 +15,11 @@ class CreateChecksTable extends Migration
     {
         Schema::create('checks', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->constrained('users')->onDelete('cascade');
+            $table->text('photo_url');
+            $table->enum('type', ['regular','prize']);
+            $table->string('code');
+            $table->enum('status',['accepted','rejected']);
             $table->timestamps();
         });
     }
