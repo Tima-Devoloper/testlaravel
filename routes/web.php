@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Check;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,10 @@ Route::post('/registration','App\Http\Controllers\AuthController@registration')-
 Route::post('/login',   'App\Http\Controllers\AuthController@login')->name('login');
 
 Route::get('/', function () {
-    return view('main');
+    $checks = Check::paginate(8);
+    return view('main',[
+        'checks' => $checks
+    ]);
 })->name('main')->middleware('auth');
 
 Route::get('/login', function () {

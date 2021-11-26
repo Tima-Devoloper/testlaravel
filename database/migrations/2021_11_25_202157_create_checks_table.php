@@ -18,7 +18,7 @@ class CreateChecksTable extends Migration
             $table->integer('user_id')->constrained('users')->onDelete('cascade');
             $table->text('photo_url');
             $table->enum('type', ['regular','prize']);
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->enum('status',['accepted','rejected']);
             $table->timestamps();
         });

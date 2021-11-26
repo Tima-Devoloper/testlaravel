@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -54,9 +53,7 @@ class AuthController extends Controller
         ];
 
         $credentials = $request->validate($validatorRules,$validatorMessages);
-
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
 
             return redirect()->route('main');
         }
